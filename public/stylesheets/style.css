@@ -3,6 +3,21 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#logoLink, #logoLink:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
+#logoLink:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+#logo {
+  font-weight: bold;
+}
+
+
+.navbar {
+  background-image: url(https://pixabay.com/static/uploads/photo/2015/12/03/10/12/news-1074604_960_720.jpg);
 }
