@@ -37,11 +37,11 @@ router.get('/stories/:id', function (req, res, next){
     var opinionArray = data[0].opinions.join(' ').split(' ');
     console.log(opinionArray);
 
-    var excludedWords = ["a", "the", "and", "or", "an", "John", "Cena", "John Cena", "of", "it"];
+    var excludedWords = ["a", "the", "and", "or", "an", "John", "Cena", "John Cena", "of", "it", ""];
 
     var wordObject = opinionArray.reduce(function (prev, curr){
       if (excludedWords.indexOf(curr) === -1){
-        prev[curr] ? prev[curr]++ : prev[curr] = 1;
+        prev[curr.toLowerCase()] ? prev[curr.toLowerCase()]++ : prev[curr.toLowerCase()] = 1;
       }
       return prev;
     }, {})

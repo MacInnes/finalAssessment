@@ -1,29 +1,45 @@
 extends layout
 
 block content
-
-  h3 Add a story
-  form(action='/' method='post')
-    div
-      label Title:
-        input(name='title' type='text')
-    div
-      label Link:
-        input(name='link' type='text')
-    div
-      label Image URL:
-        input(name='image' type='url')
-    div
-      label Summary:
-        input(name='summary' type='text') 
-    button(type='submit') Add a story
+  br
+  br
+  div(id='hider')
+    button(id='toggler') Hide/Show form
+  div(id='storyForm')
+    h3 Add a story
+    form(action='/' method='post')
+      div(class='col-md-8')
+        label(class='col-md-2') Title:
+        input(class='col-md-6' name='title' type='text' required)
+      div(class='col-md-8')
+        label(class='col-md-2') Link:
+        input(class='col-md-6' name='link' type='url' required)
+      div(class='col-md-8')
+        label(class='col-md-2') Image URL:
+        input(class='col-md-6' name='image' type='url' required)
+      div(class='col-md-8')
+        label(class='col-md-2' for='summary') Summary:
+        textarea(class='col-md-6' name='summary' id='summary' required)
+      div(class='col-md-8')
+        button(type='submit') Add story
   
 
-  div(id='storiesSection')
+  div(id='storiesSection' class='col-md-12')
     if (stories)
-      each story in stories
-        a(href='stories/' + story._id)
-          h4 #{story.title}
+      h1 Today's stories:
+
+      if (stories.length < 3)
+        each story in stories
+          a(href='stories/' + story._id class='col-md-4')
+            img(src= story.image id='thumbnail')
+            p #{story.title}
+      else
+        -for (var i = 0; i < 3; i++){
+          a(href='stories/' + stories[i]._id class='col-md-4')
+            img(src= stories[i].image id='thumbnail')
+            p #{stories[i].title}
+        -}
 
   script(src='https://code.jquery.com/jquery-2.2.0.min.js')
   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==", crossorigin="anonymous")
+  script(src='/javascripts/application.js')

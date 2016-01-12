@@ -17,6 +17,27 @@ body {
   font-weight: bold;
 }
 
+#summary {
+  height: 50px;
+}
+
+img {
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+a > img {
+    /*height: auto; */
+    width: auto; 
+    /*max-width: 200px; */
+    height: 200px;
+}
+
+#hider {
+  float: right;
+}
 
 .navbar {
   background-image: url(https://pixabay.com/static/uploads/photo/2015/12/03/10/12/news-1074604_960_720.jpg);
